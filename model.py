@@ -18,6 +18,10 @@ class Config:
     INIT_NOISE = True
 
 
+class Robot:
+    pass
+
+
 class Room:
     def __init__(self, name, light, temperature, noise):
         self.name = name
