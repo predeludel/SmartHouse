@@ -8,7 +8,8 @@ app.config['SECRET_KEY'] = '\xfd{H\xe5<\x95\xf9\xe3\x96.5\xd1\x01O<!\xd5\xa2\xa0
 DATABASE_FOLDER = "database"
 BEDROOM = "bedroom"
 LIVING_ROOM = "living_room"
-
+KITCHEN = "kitchen"
+BATHROOM = "bathroom"
 TRUE = "True"
 
 
@@ -52,11 +53,17 @@ class House:
     def __init__(self):
         self.bedroom = Room(BEDROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
         self.living_room = Room(LIVING_ROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
+        self.kitchen = Room(KITCHEN, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
+        self.bathroom = Room(BATHROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
 
     def load(self):
         self.bedroom.load()
         self.living_room.load()
+        self.kitchen.load()
+        self.bathroom.load()
 
     def save(self):
         self.bedroom.save()
         self.living_room.save()
+        self.kitchen.save()
+        self.bathroom.save()
