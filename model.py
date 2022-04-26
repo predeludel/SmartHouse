@@ -12,6 +12,7 @@ KITCHEN = "kitchen"
 BATHROOM = "bathroom"
 TRUE = "True"
 ROBOT_FILE = "robot.txt"
+FARM_FILE = "farm.txt"
 
 
 class Config:
@@ -21,6 +22,7 @@ class Config:
     INIT_STATUS = False
     INIT_ENERGY = 100
     INIT_PLACE = "На зарядке"
+    INIT_STAGE = "Не активна"
 
 
 class Robot:
@@ -42,6 +44,35 @@ class Robot:
                 self.status = data[0].split("=")[1] == TRUE
                 self.energy = int(data[1].split("=")[1])
                 self.place = data[2].split("=")[1]
+        except FileNotFoundError:
+            self.save()
+        except ValueError:
+            self.save()
+
+
+class Farm:
+    def __init__(self, temperature, light, status, stage):
+        self.temperature = temperature
+        self.light = light
+        self.status = status
+        self.stage = stage
+
+    def save(self):
+        with open(f'{DATABASE_FOLDER}/{FARM_FILE}', 'w', encoding='utf-8') as file:
+            file.write(f"temperature={self.temperature}\n")
+            file.write(f"light={self.light}\n")
+            file.write(f"status={self.status}\n")
+            file.write(f"stage={self.stage}")
+
+    def load(self):
+        try:
+            with open(f'{DATABASE_FOLDER}/{FARM_FILE}', 'r', encoding='utf-8') as file:
+                data = file.read().split("\n")
+                self.temperature = float(data[0].split("=")[1])
+                self.light = (data[1].split("=")[1]) == TRUE
+                self.status = (data[2].split("=")[1]) == TRUE
+                self.stage = (data[3].split("=")[1])
+
         except FileNotFoundError:
             self.save()
         except ValueError:
@@ -80,7 +111,8 @@ class House:
         self.living_room = Room(LIVING_ROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
         self.kitchen = Room(KITCHEN, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
         self.bathroom = Room(BATHROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
-        self.robot = Robot(Config.INIT_STATUS,Config.INIT_ENERGY,Config.INIT_PLACE)
+        self.robot = Robot(Config.INIT_STATUS, Config.INIT_ENERGY, Config.INIT_PLACE)
+        self.farm = Farm(Config.INIT_TEMPERATURE, Config.INIT_LIGHT, Config.INIT_STATUS, Config.INIT_STAGE)
 
     def load(self):
         self.bedroom.load()
@@ -88,6 +120,7 @@ class House:
         self.kitchen.load()
         self.bathroom.load()
         self.robot.load()
+        self.farm.load()
 
     def save(self):
         self.bedroom.save()
@@ -95,3 +128,4 @@ class House:
         self.kitchen.save()
         self.bathroom.save()
         self.robot.save()
+        self.farm.save()
