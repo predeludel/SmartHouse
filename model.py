@@ -11,16 +11,41 @@ LIVING_ROOM = "living_room"
 KITCHEN = "kitchen"
 BATHROOM = "bathroom"
 TRUE = "True"
+ROBOT_FILE = "robot.txt"
 
 
 class Config:
     INIT_LIGHT = True
     INIT_TEMPERATURE = 0.0
     INIT_NOISE = True
+    INIT_STATUS = False
+    INIT_ENERGY = 100
+    INIT_PLACE = "На зарядке"
 
 
 class Robot:
-    pass
+    def __init__(self, status, energy, place):
+        self.status = status
+        self.energy = energy
+        self.place = place
+
+    def save(self):
+        with open(f'{DATABASE_FOLDER}/{ROBOT_FILE}', 'w', encoding='utf-8') as file:
+            file.write(f"status={self.status}\n")
+            file.write(f"energy={self.energy}\n")
+            file.write(f"place={self.place}")
+
+    def load(self):
+        try:
+            with open(f'{DATABASE_FOLDER}/{ROBOT_FILE}', 'r', encoding='utf-8') as file:
+                data = file.read().split("\n")
+                self.status = data[0].split("=")[1] == TRUE
+                self.energy = int(data[1].split("=")[1])
+                self.place = data[2].split("=")[1]
+        except FileNotFoundError:
+            self.save()
+        except ValueError:
+            self.save()
 
 
 class Room:
@@ -55,15 +80,18 @@ class House:
         self.living_room = Room(LIVING_ROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
         self.kitchen = Room(KITCHEN, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
         self.bathroom = Room(BATHROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
+        self.robot = Robot(Config.INIT_STATUS,Config.INIT_ENERGY,Config.INIT_PLACE)
 
     def load(self):
         self.bedroom.load()
         self.living_room.load()
         self.kitchen.load()
         self.bathroom.load()
+        self.robot.load()
 
     def save(self):
         self.bedroom.save()
         self.living_room.save()
         self.kitchen.save()
         self.bathroom.save()
+        self.robot.save()

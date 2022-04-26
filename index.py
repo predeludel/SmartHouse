@@ -7,7 +7,11 @@ house = House()
 @app.route('/')
 def show_main():
     house.load()
-    return render_template("main.html", house=house)
+    return render_template("main.html", house=house, temperature_bedroom=house.bedroom.temperature,
+                           temperature_living_room=house.living_room.temperature,
+                           temperature_kitchen=house.kitchen.temperature,
+                           temperature_bathroom=house.bathroom.temperature, status_robot=house.robot.status,
+                           energy_robot=house.robot.energy, place_robot=house.robot.place)
 
 
 @app.route('/<room_name>/light')
@@ -18,26 +22,17 @@ def light(room_name):
         house.living_room.light = not house.living_room.light
     elif room_name == KITCHEN:
         house.kitchen.light = not house.kitchen.light
-        print("wef")
     elif room_name == BATHROOM:
         house.bathroom.light = not house.bathroom.light
-        print("ты норм")
     house.save()
     return show_main()
 
 
-@app.route('/<room_name>/temperature')
-def temperature(room_name):
-    if room_name == BEDROOM:
-        temperature = "123"
-    elif room_name == LIVING_ROOM:
-        temperature = house.living_room.temperature
-    elif room_name == KITCHEN:
-        temperature = house.kitchen.temperature
-    elif room_name == BATHROOM:
-        temperature = house.bathroom.temperature
+@app.route('/robot/status')
+def status_robot():
+    house.robot.status = not house.robot.status
     house.save()
-    return show_main(temperature=temperature)
+    return show_main()
 
 
 if __name__ == '__main__':
