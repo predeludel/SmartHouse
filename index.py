@@ -5,6 +5,12 @@ house = House()
 
 
 @app.route('/')
+def login():
+    if request.args.get("key") == "00":
+        return show_main()
+    return render_template("login.html")
+
+
 def show_main():
     house.load()
     return render_template("main.html", house=house)
