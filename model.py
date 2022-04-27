@@ -13,6 +13,7 @@ BATHROOM = "bathroom"
 TRUE = "True"
 ROBOT_FILE = "robot.txt"
 FARM_FILE = "farm.txt"
+SECURITY_FILE = "security.txt"
 
 
 class Config:
@@ -23,6 +24,8 @@ class Config:
     INIT_ENERGY = 100
     INIT_PLACE = "На зарядке"
     INIT_STAGE = "Не активна"
+    INIT_DOOR = True
+    INIT_SENSOR = False
 
 
 class Robot:
@@ -105,6 +108,38 @@ class Room:
             self.save()
 
 
+class Security:
+    def __init__(self, door, sensor_bedroom, sensor_living_room, sensor_kitchen, sensor_bathroom):
+        self.door = door
+        self.sensor_bedroom = sensor_bedroom
+        self.sensor_living_room = sensor_living_room
+        self.sensor_kitchen = sensor_kitchen
+        self.sensor_bathroom = sensor_bathroom
+
+    def save(self):
+        with open(f'{DATABASE_FOLDER}/{SECURITY_FILE}', 'w', encoding='utf-8') as file:
+            file.write(f"door={self.door}\n")
+            file.write(f"sensor_bedroom={self.sensor_bedroom}\n")
+            file.write(f"sensor_living_room={self.sensor_living_room}\n")
+            file.write(f"sensor_kitchen={self.sensor_kitchen}\n")
+            file.write(f"sensor_bathroom ={self.sensor_bathroom}")
+
+    def load(self):
+        try:
+            with open(f'{DATABASE_FOLDER}/{SECURITY_FILE}', 'r', encoding='utf-8') as file:
+                data = file.read().split("\n")
+                self.door = data[0].split("=")[1] == TRUE
+                self.sensor_bedroom = data[1].split("=")[1] == TRUE
+                self.sensor_living_room = data[2].split("=")[1] == TRUE
+                self.sensor_kitchen = data[3].split("=")[1] == TRUE
+                self.sensor_bathroom = data[4].split("=")[1] == TRUE
+
+        except FileNotFoundError:
+            self.save()
+        except ValueError:
+            self.save()
+
+
 class House:
     def __init__(self):
         self.bedroom = Room(BEDROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
@@ -113,6 +148,8 @@ class House:
         self.bathroom = Room(BATHROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
         self.robot = Robot(Config.INIT_STATUS, Config.INIT_ENERGY, Config.INIT_PLACE)
         self.farm = Farm(Config.INIT_TEMPERATURE, Config.INIT_LIGHT, Config.INIT_STATUS, Config.INIT_STAGE)
+        self.security = Security(Config.INIT_DOOR, Config.INIT_SENSOR, Config.INIT_SENSOR, Config.INIT_SENSOR,
+                                 Config.INIT_SENSOR)
 
     def load(self):
         self.bedroom.load()
@@ -121,6 +158,7 @@ class House:
         self.bathroom.load()
         self.robot.load()
         self.farm.load()
+        self.security.load()
 
     def save(self):
         self.bedroom.save()
@@ -129,3 +167,4 @@ class House:
         self.bathroom.save()
         self.robot.save()
         self.farm.save()
+        self.security.save()

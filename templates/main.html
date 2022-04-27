@@ -24,129 +24,142 @@
         <div class="row  mt-4 ">
             <div class="container border border-dark border-5 rounded-pill col-md-6  p-5">
                 <h3 class="fw-bold text-center text-dark">Спальня</h3>
-                <div class="container d-flex"></div>
-                {% if house.bedroom.light %}
-                <a href="/bedroom/light" type="button " class="btn btn-warning text-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
-                        <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
-                    </svg>
-                    Свет Выкл
-                </a>
-                {% else %}
-                <a href="/bedroom/light" type="button" class="btn btn-warning text-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
-                        <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
-                    </svg>
-                    Свет Вкл
-                </a>
-                {% endif %}
-                <button type="button" class="btn btn-success">{{temperature_bedroom}}℃</button>
-                <button type="button" class="btn btn-danger mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-exclamation-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
-                    </svg>
-                    Странные шумы
-                </button>
-            </div>
-            <div class="container border border-dark text-center border-5 rounded-pill col-md-6  p-5">
-                <h3 class="fw-bold  text-dark">Гостиная</h3>
-                <div class="container d-flex"></div>
+                <div class="d-flex">
+                    {% if house.bedroom.light %}
+                    <a href="/bedroom/light" type="button " class="btn btn-warning text-dark m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
+                            <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
+                        </svg>
+                        Свет Выкл
+                    </a>
+                    {% else %}
+                    <a href="/bedroom/light" type="button" class="btn btn-warning text-dark m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
+                            <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
+                        </svg>
+                        Свет Вкл
+                    </a>
+                    {% endif %}
+                    <form action="/bedroom/temperature/set">
+                        <input type="text" name="new_temperature" onchange="this.form.submit()"
+                               value="{{house.bedroom.temperature}}℃" class="btn btn-success m-2 w-50">
+                    </form>
 
-                {% if house.living_room.light %}
-                <a href="/living_room/light" type="button " class="btn btn-warning text-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
-                        <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
-                    </svg>
-                    Свет Выкл
-                </a>
-                {% else %}
-                <a href="/living_room/light" type="button" class="btn btn-warning text-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
-                        <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
-                    </svg>
-                    Свет Вкл
-                </a>
-                {% endif %}
-                <button type="button" class="btn btn-success ">{{temperature_living_room}}℃</button>
+                </div>
+            </div>
+            <div class="container border border-dark  border-5 rounded-pill col-md-6  p-5">
+                <h3 class="fw-bold text-center text-dark">Гостиная</h3>
+                <div class="d-flex">
+                    {% if house.bedroom.light %}
+                    <a href="/bedroom/light" type="button " class="btn btn-warning text-dark m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
+                            <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
+                        </svg>
+                        Свет Выкл
+                    </a>
+                    {% else %}
+                    <a href="/bedroom/light" type="button" class="btn btn-warning text-dark m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
+                            <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
+                        </svg>
+                        Свет Вкл
+                    </a>
+                    {% endif %}
+                    <form action="/bedroom/temperature/set">
+                        <input type="text" name="new_temperature" onchange="this.form.submit()"
+                               value="{{house.bedroom.temperature}}℃" class="btn btn-success m-2 w-50">
+                    </form>
+                    <!--                 -->
+                </div>
+
             </div>
         </div>
 
     </div>
     <div class="container  mt-4 ">
         <div class="row  mt-4 ">
-            <div class="container col-md-6 text-center border border-dark  border-5 rounded-pill p-5">
-                <h3 class="fw-bold  text-dark">Кухня</h3>
-                <div class="container d-flex"></div>
+            <div class="container col-md-6 border border-dark border-5 rounded-pill p-5">
+                <h3 class="fw-bold text-center text-dark">Кухня</h3>
+                <div class="d-flex">
 
-                {% if house.kitchen.light %}
-                <a href="/kitchen/light" type="button " class="btn btn-warning text-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
-                        <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
-                    </svg>
-                    Свет Выкл
-                </a>
-                {% else %}
-                <a href="/kitchen/light" type="button" class="btn btn-warning text-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
-                        <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
-                    </svg>
-                    Свет Вкл
-                </a>
-                {% endif %}
-                <button type="button" class="btn btn-success">{{temperature_kitchen}}℃</button>
+                    {% if house.kitchen.light %}
+                    <a href="/kitchen/light" type="button " class="btn btn-warning text-dark m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
+                            <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
+                        </svg>
+                        Свет Выкл
+                    </a>
+                    {% else %}
+                    <a href="/kitchen/light" type="button" class="btn btn-warning text-dark  m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
+                            <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
+                        </svg>
+                        Свет Вкл
+                    </a>
+                    {% endif %}
+                    <form action="/kitchen/temperature/set">
+                        <input type="text" name="new_temperature" onchange="this.form.submit()"
+                               value="{{house.kitchen.temperature}}℃" class="btn btn-success m-2 w-50">
+                    </form>
+                </div>
             </div>
-            <div class="container col-md-6 text-center border border-dark border-5 rounded-pill p-5">
-                <h3 class="fw-bold  text-dark">Санузел</h3>
-                <div class="container d-flex"></div>
-                {% if house.bathroom.light %}
-                <a href="/bathroom/light" type="button " class="btn btn-warning text-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
-                        <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
-                    </svg>
-                    Свет Выкл
-                </a>
-                {% else %}
-                <a href="/bathroom/light" type="button" class="btn btn-warning text-dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
-                        <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
-                    </svg>
-                    Свет Вкл
-                </a>
-                {% endif %}
-                <button type="button" class="btn btn-success">{{ temperature_bathroom }}℃</button>
+            <div class="container col-md-6 border border-dark border-5 rounded-pill p-5">
+                <h3 class="fw-bold text-center  text-dark">Санузел</h3>
+                <div class="d-flex">
+                    {% if house.bathroom.light %}
+                    <a href="/bathroom/light" type="button " class="btn btn-warning text-dark m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-alt-high" viewBox="0 0 16 16">
+                            <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4zm0 1a3 3 0 0 1 2.959 2.5H5.04A3 3 0 0 1 8 8z"/>
+                        </svg>
+                        Свет Выкл
+                    </a>
+                    {% else %}
+                    <a href="/bathroom/light" type="button" class="btn btn-warning text-dark m-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-brightness-alt-high-fill" viewBox="0 0 16 16">
+                            <path d="M8 3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 3zm8 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zm-13.5.5a.5.5 0 0 0 0-1h-2a.5.5 0 0 0 0 1h2zm11.157-6.157a.5.5 0 0 1 0 .707l-1.414 1.414a.5.5 0 1 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm-9.9 2.121a.5.5 0 0 0 .707-.707L3.05 5.343a.5.5 0 1 0-.707.707l1.414 1.414zM8 7a4 4 0 0 0-4 4 .5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5 4 4 0 0 0-4-4z"/>
+                        </svg>
+                        Свет Вкл
+                    </a>
+                    {% endif %}
+                    <form action="/bathroom/temperature/set">
+                        <input type="text" name="new_temperature" onchange="this.form.submit()"
+                               value="{{house.bathroom.temperature}}℃" class="btn btn-success m-2 w-50">
+                    </form>
+                </div>
             </div>
         </div>
 
     </div>
     <div class="row  mt-4">
         <div class="container col-md-4 border border-dark border-4 p-3" style="border-radius: 0.8rem;">
-            <h3 class="fw-bold  text-dark">Безопасность</h3>
+            <h3 class="fw-bold m-2 text-dark">Безопасность</h3>
             <div class="container d-flex"></div>
-            <button type="button" class="btn btn-dark">
+            {% if house.security.door %}
+            <a href="/security/door" type="button" class="btn btn-dark m-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+                    <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                </svg>
+                Дверь закрыта</a>
+            {% else %}
+            <a href="/security/door" type="button" class="btn btn-dark m-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-door-open-fill" viewBox="0 0 16 16">
                     <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
                 </svg>
-                Дверь открыта
-            </button>
-            <!--            <button type="button" class="btn btn-primary">-->
-            <!--                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
-            <!--                     class="bi bi-door-closed-fill" viewBox="0 0 16 16">-->
-            <!--                    <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>-->
-            <!--                </svg>-->
-            <!--                Дверь Закрыта-->
-            <!--            </button>-->
-            <button type="button" class="btn btn-danger mt-1">
+                Дверь открыта</a>
+            {% endif %}
+
+
+            <button type="button" class="btn btn-danger mt-1 m-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -156,16 +169,16 @@
             </button>
         </div>
         <div class="container col-md-4 border border-dark border-4 p-3" style="border-radius: 0.8rem;">
-            <h3 class="fw-bold  text-dark">Робот</h3>
+            <h3 class="fw-bold m-2 text-dark">Робот</h3>
             <div class="container d-flex"></div>
-            {% if status_robot %}
-            <a href="/robot/status" type="button" class="btn btn-primary">Вкл</a>
+            {% if house.robot.status %}
+            <a href="/robot/status" type="button" class="btn btn-primary m-2">Вкл</a>
             {% else %}
-            <a href="/robot/status" type="button" class="btn btn-primary">Выкл</a>
+            <a href="/robot/status" type="button" class="btn btn-primary m-2">Выкл</a>
             {% endif %}
 
             <button type="button" class="btn btn-danger">
-                {{energy_robot}}
+                {{house.robot.energy}}
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-lightning-fill" viewBox="0 0 16 16">
                     <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"/>
@@ -173,32 +186,37 @@
                 </svg>
 
             </button>
-            <p class="text-dark">{{place_robot}}</p>
+            <p class="text-dark m-2">{{house.robot.place}}</p>
 
         </div>
         <div class="container col-md-4 border border-dark border-4 p-3" style="border-radius: 0.8rem;">
-            <h3 class="fw-bold  text-dark">Теплицы</h3>
-            <div class="container d-flex"></div>
-            <button type="button" class="btn btn-primary">{{house.farm.temperature}}℃</button>
-            <a href="/farm/light" type="button" class="btn btn-warning text-dark">
-                {% if house.farm.light %}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
-                    <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/>
-                </svg>
+            <h3 class="fw-bold m-2 text-dark">Теплицы</h3>
+            <div class=" d-flex">
+
+                <a href="/farm/light" type="button" class="btn btn-warning text-dark m-2">
+                    {% if house.farm.light %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-lightbulb-fill" viewBox="0 0 16 16">
+                        <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    {% else %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-lightbulb-off-fill" viewBox="0 0 16 16">
+                        <path d="M2 6c0-.572.08-1.125.23-1.65l8.558 8.559A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm10.303 4.181L3.818 1.697a6 6 0 0 1 8.484 8.484zM5 14.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5zM2.354 1.646a.5.5 0 1 0-.708.708l12 12a.5.5 0 0 0 .708-.708l-12-12z"/>
+                    </svg>
+                    {% endif %}
+                </a>
+                {% if house.farm.status %}
+                <a href="/farm/status" type="button" class="btn btn-primary m-2">Выкл</a>
                 {% else %}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-lightbulb-off-fill" viewBox="0 0 16 16">
-                    <path d="M2 6c0-.572.08-1.125.23-1.65l8.558 8.559A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm10.303 4.181L3.818 1.697a6 6 0 0 1 8.484 8.484zM5 14.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5zM2.354 1.646a.5.5 0 1 0-.708.708l12 12a.5.5 0 0 0 .708-.708l-12-12z"/>
-                </svg>
+                <a href="/farm/status" type="button" class="btn btn-primary m-2">Вкл</a>
                 {% endif %}
-            </a>
-            {% if house.farm.status %}
-            <a href="/farm/status" type="button" class="btn btn-primary">Выкл</a>
-            {% else %}
-            <a href="/farm/status" type="button" class="btn btn-primary">Вкл</a>
-            {% endif %}
-            <p class="text-dark">{{house.farm.stage}}</p>
+                <form action="/farm/temperature/set">
+                    <input type="text" name="new_temperature" onchange="this.form.submit()"
+                           value="{{house.farm.temperature}}℃" class="btn btn-primary m-2 w-50">
+                </form>
+            </div>
+            <p class="text-dark m-2">{{house.farm.stage}}</p>
         </div>
 
     </div>
