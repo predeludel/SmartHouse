@@ -91,7 +91,7 @@ def api_farm_temperature():
     return jsonify(house.farm.as_dict())
 
 
-@app.route('/api/light/farm/', methods=["GET", "POST"])
+@app.route('/api/farm/light', methods=["GET", "POST"])
 def api_farm_light():
     if request.method == 'POST':
         house.farm.light = request.json.get("light")
