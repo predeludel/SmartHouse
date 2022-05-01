@@ -52,6 +52,13 @@ class Robot:
         except ValueError:
             self.save()
 
+    def as_dict(self):
+        return {
+            "status": self.status,
+            "energy": self.energy,
+            "place": self.place
+        }
+
 
 class Farm:
     def __init__(self, temperature, light, status, stage):
@@ -81,19 +88,25 @@ class Farm:
         except ValueError:
             self.save()
 
+    def as_dict(self):
+        return {
+            "temperature": self.temperature,
+            "light": self.light,
+            "status": self.status,
+            "stage": self.stage
+        }
+
 
 class Room:
-    def __init__(self, name, light, temperature, noise):
+    def __init__(self, name, light, temperature):
         self.name = name
         self.light = light
         self.temperature = temperature
-        self.noise = noise
 
     def save(self):
         with open(f'{DATABASE_FOLDER}/{self.name}.txt', 'w', encoding='utf-8') as file:
             file.write(f"light={self.light}\n")
             file.write(f"temperature={self.temperature}\n")
-            file.write(f"noise={self.noise}")
 
     def load(self):
         try:
@@ -101,11 +114,16 @@ class Room:
                 data = file.read().split("\n")
                 self.light = data[0].split("=")[1] == TRUE
                 self.temperature = float(data[1].split("=")[1])
-                self.noise = data[2].split("=")[1] == TRUE
         except FileNotFoundError:
             self.save()
         except ValueError:
             self.save()
+
+    def as_dict(self):
+        return {
+            "light": self.light,
+            "temperature": self.temperature,
+        }
 
 
 class Security:
@@ -139,13 +157,32 @@ class Security:
         except ValueError:
             self.save()
 
+    def as_dict(self):
+        return {
+            "door": self.door,
+            "sensor_bedroom": self.sensor_bedroom,
+            "sensor_living_room ": self.sensor_living_room,
+            "sensor_kitchen": self.sensor_kitchen,
+            "sensor_bathroom": self.sensor_bathroom,
+        }
+
+    def set_sensor(self, room_name, value):
+        if room_name == BEDROOM:
+            self.sensor_bedroom = value
+        elif room_name == BATHROOM:
+            self.sensor_bathroom = value
+        elif room_name == KITCHEN:
+            self.sensor_kitchen = value
+        elif room_name == LIVING_ROOM:
+            self.sensor_living_room = value
+
 
 class House:
     def __init__(self):
-        self.bedroom = Room(BEDROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
-        self.living_room = Room(LIVING_ROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
-        self.kitchen = Room(KITCHEN, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
-        self.bathroom = Room(BATHROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE, Config.INIT_NOISE)
+        self.bedroom = Room(BEDROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE)
+        self.living_room = Room(LIVING_ROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE)
+        self.kitchen = Room(KITCHEN, Config.INIT_LIGHT, Config.INIT_TEMPERATURE)
+        self.bathroom = Room(BATHROOM, Config.INIT_LIGHT, Config.INIT_TEMPERATURE)
         self.robot = Robot(Config.INIT_STATUS, Config.INIT_ENERGY, Config.INIT_PLACE)
         self.farm = Farm(Config.INIT_TEMPERATURE, Config.INIT_LIGHT, Config.INIT_STATUS, Config.INIT_STAGE)
         self.security = Security(Config.INIT_DOOR, Config.INIT_SENSOR, Config.INIT_SENSOR, Config.INIT_SENSOR,

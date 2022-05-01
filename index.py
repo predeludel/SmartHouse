@@ -1,7 +1,129 @@
-from flask import render_template, request
+from flask import render_template, request, jsonify
 from model import *
 
 house = House()
+
+
+@app.route('/api/<room_name>', methods=["GET"])
+def api_room(room_name):
+    room = get_room(room_name)
+    return jsonify(room.as_dict())
+
+
+@app.route('/api/security', methods=["GET"])
+def api_security():
+    return jsonify(house.security.as_dict())
+
+
+@app.route('/api/robot', methods=["GET"])
+def api_robot():
+    return jsonify(house.robot.as_dict())
+
+
+@app.route('/api/farm', methods=["GET"])
+def api_farm():
+    return jsonify(house.farm.as_dict())
+
+
+@app.route('/api/<room_name>/light', methods=["GET", "POST"])
+def api_light(room_name):
+    room = get_room(room_name)
+    if request.method == 'POST':
+        room.light = request.json.get("light")
+        house.save()
+    return jsonify(room.as_dict())
+
+
+@app.route('/api/<room_name>/temperature', methods=["GET", "POST"])
+def api_temperature(room_name):
+    room = get_room(room_name)
+    if request.method == 'POST':
+        room.temperature = float(request.json.get("temperature"))
+        house.save()
+    return jsonify(room.as_dict())
+
+
+@app.route('/api/security/<room_name>', methods=["GET", "POST"])
+def api_security_sensor(room_name):
+    if request.method == 'POST':
+        house.security.set_sensor(room_name, request.json.get("sensor"))
+        house.save()
+    return jsonify(house.security.as_dict())
+
+
+@app.route('/api/security/door', methods=["GET", "POST"])
+def api_security_door():
+    if request.method == 'POST':
+        house.security.door = request.json.get("door")
+        house.save()
+    return jsonify(house.security.as_dict())
+
+
+@app.route('/api/robot/energy', methods=["GET", "POST"])
+def api_robot_energy():
+    if request.method == 'POST':
+        house.robot.energy = int(request.json.get("energy"))
+        house.save()
+    return jsonify(house.robot.as_dict())
+
+
+@app.route('/api/robot/place', methods=["GET", "POST"])
+def api_robot_place():
+    if request.method == 'POST':
+        house.robot.place = request.json.get("place")
+        house.save()
+    return jsonify(house.robot.as_dict())
+
+
+@app.route('/api/robot/status', methods=["GET", "POST"])
+def api_robot_status():
+    if request.method == 'POST':
+        house.robot.status = request.json.get("status")
+        house.save()
+    return jsonify(house.robot.as_dict())
+
+
+@app.route('/api/farm/temperature', methods=["GET", "POST"])
+def api_farm_temperature():
+    if request.method == 'POST':
+        house.farm.temperature = float(request.json.get("temperature"))
+        house.save()
+    return jsonify(house.farm.as_dict())
+
+
+@app.route('/api/light/farm/', methods=["GET", "POST"])
+def api_farm_light():
+    if request.method == 'POST':
+        house.farm.light = request.json.get("light")
+        house.save()
+    return jsonify(house.farm.as_dict())
+
+
+@app.route('/api/farm/status', methods=["GET", "POST"])
+def api_farm_status():
+    if request.method == 'POST':
+        house.farm.status = request.json.get("status")
+        house.save()
+    return jsonify(house.farm.as_dict())
+
+
+@app.route('/api/farm/stage', methods=["GET", "POST"])
+def api_farm_stage():
+    if request.method == 'POST':
+        house.farm.stage = request.json.get("stage")
+        house.save()
+    return jsonify(house.farm.as_dict())
+
+
+def get_room(room_name):
+    if room_name == BEDROOM:
+        return house.bedroom
+    elif room_name == LIVING_ROOM:
+        return house.living_room
+    elif room_name == KITCHEN:
+        return house.kitchen
+    elif room_name == BATHROOM:
+        return house.bathroom
 
 
 @app.route('/')
@@ -18,14 +140,8 @@ def show_main():
 
 @app.route('/<room_name>/light')
 def light_room(room_name):
-    if room_name == BEDROOM:
-        house.bedroom.light = not house.bedroom.light
-    elif room_name == LIVING_ROOM:
-        house.living_room.light = not house.living_room.light
-    elif room_name == KITCHEN:
-        house.kitchen.light = not house.kitchen.light
-    elif room_name == BATHROOM:
-        house.bathroom.light = not house.bathroom.light
+    room = get_room(room_name)
+    room.light = not room.light
     house.save()
     return show_main()
 
@@ -58,14 +174,8 @@ def temperature_room(room_name):
     try:
         new_temperature = float(new_temperature.replace("℃", ""))
         if 0 < new_temperature < 38:
-            if room_name == BEDROOM:
-                house.bedroom.temperature = new_temperature
-            elif room_name == LIVING_ROOM:
-                house.living_room.temperature = new_temperature
-            elif room_name == KITCHEN:
-                house.kitchen.temperature = new_temperature
-            elif room_name == BATHROOM:
-                house.bathroom.temperature = new_temperature
+            room = get_room(room_name)
+            room.temperature = new_temperature
             house.save()
             return show_main()
         else:
